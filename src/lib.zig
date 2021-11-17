@@ -1,5 +1,9 @@
 pub usingnamespace @import("concepts.zig");
 
+pub const traits = struct {
+    pub usingnamespace @import("traits.zig");
+};
+
 pub fn require(comptime concept: fn (anytype) void, value: anytype) void {
     return concept(value);
 }

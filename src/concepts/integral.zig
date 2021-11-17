@@ -1,11 +1,9 @@
-const traits = @import("../traits.zig");
+const concepts = @import("../lib.zig");
 
-const concept = "Integral";
+const name = "Integral";
 
 pub fn integral(value: anytype) void {
-    const T = @TypeOf(value);
-
-    if (comptime !traits.isIntegral(T)) {
-        @compileError("concept " ++ concept ++ " was not satisfied");
+    if (comptime !concepts.traits.isIntegral(@TypeOf(value))) {
+        concepts.fail(name, "");
     }
 }

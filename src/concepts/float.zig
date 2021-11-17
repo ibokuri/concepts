@@ -1,11 +1,9 @@
-const traits = @import("../traits.zig");
+const concepts = @import("../lib.zig");
 
-const concept = "Float";
+const name = "Float";
 
 pub fn float(value: anytype) void {
-    const T = @TypeOf(value);
-
-    if (comptime !traits.isFloat(T)) {
-        @compileError("concept " ++ concept ++ " was not satisfied");
+    if (comptime !concepts.traits.isFloat(@TypeOf(value))) {
+        concepts.fail(name, "");
     }
 }

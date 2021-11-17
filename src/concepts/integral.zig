@@ -1,4 +1,4 @@
-const traits = @import("traits");
+const traits = @import("../traits.zig");
 
 const concept = "Integral";
 

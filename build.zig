@@ -22,9 +22,7 @@ pub fn build(b: *Builder) void {
 
         t.setBuildMode(mode);
         t.setTarget(target);
-
         t.addPackagePath(package_name, package_path);
-        t.addPackagePath("traits", "src/traits.zig");
 
         step.dependOn(&t.step);
     }
@@ -34,6 +32,5 @@ pub fn build(b: *Builder) void {
 
     lib.setBuildMode(mode);
     lib.setTarget(target);
-    lib.addPackagePath("traits", "src/traits.zig");
     lib.install();
 }

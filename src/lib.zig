@@ -1,14 +1,13 @@
 pub usingnamespace @import("concepts.zig");
 
-pub fn require(value: anytype, comptime concept: fn (anytype) void) void {
+pub fn require(comptime concept: fn (anytype) void, value: anytype) void {
     return concept(value);
 }
 
-/// TODO: Check that the elements of `concept` are `fn (anytype void)`.
 pub fn requires(value: anytype, concepts: anytype) void {
-    require(concepts, @This().tuple);
+    require(@This().tuple, concepts);
 
     inline for (concepts) |concept| {
-        require(value, concept);
+        require(concept, value);
     }
 }

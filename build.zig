@@ -34,5 +34,6 @@ pub fn build(b: *Builder) void {
 
     lib.setBuildMode(mode);
     lib.setTarget(target);
+    lib.addPackagePath("traits", "src/traits.zig");
     lib.install();
 }

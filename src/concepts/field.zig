@@ -24,10 +24,12 @@ pub fn field(value: anytype) void {
     }
 
     comptime {
-        // TODO: container check
+        if (!concepts.traits.isContainer(value[0])) {
+            concepts.fail(concept, "type `" ++ @typeName(value[0]) ++ "` is not a container");
+        }
 
         if (!concepts.traits.containsField(value[0], value[1])) {
-            concepts.fail(concept, "`" ++ value[1] ++ "` is not a field in type `" ++ @typeName(value[0]) ++ "`");
+            concepts.fail(concept, "type `" ++ @typeName(value[0]) ++ "` has no `" ++ value[1] ++ "` field");
         }
     }
 }

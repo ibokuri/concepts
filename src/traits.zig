@@ -1,3 +1,4 @@
+pub usingnamespace @import("traits/contains_decl.zig");
 pub usingnamespace @import("traits/contains_field.zig");
 
 pub usingnamespace @import("traits/is.zig");

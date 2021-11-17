@@ -1,0 +1,12 @@
+const traits = @import("traits");
+
+const concept = "SignedIntegral";
+
+pub fn signedIntegral(value: anytype) void {
+    const T = @TypeOf(value);
+
+    switch (traits.isSignedIntegral(T)) {
+        true => {},
+        false => @compileError("concept " ++ concept ++ " was not satisfied"),
+    }
+}

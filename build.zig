@@ -2,12 +2,11 @@ const std = @import("std");
 
 const Builder = std.build.Builder;
 
-const package_name = "trait";
+const package_name = "concepts";
 const package_path = "src/lib.zig";
 
 const tests = [_][]const u8{
-    //"src/tests/ser/tests.zig",
-    //"src/tests/de/tests.zig",
+    "src/traits.zig",
 };
 
 pub fn build(b: *Builder) void {
@@ -25,6 +24,7 @@ pub fn build(b: *Builder) void {
         t.setTarget(target);
 
         t.addPackagePath(package_name, package_path);
+        t.addPackagePath("traits", "src/traits.zig");
 
         step.dependOn(&t.step);
     }

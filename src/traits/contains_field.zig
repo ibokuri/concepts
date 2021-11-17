@@ -1,7 +1,7 @@
 const std = @import("std");
 
-pub fn containsField(comptime T: type, comptime field: []const u8) bool {
-    return std.meta.trait.hasField(field)(T);
+pub fn containsField(comptime T: type, comptime name: []const u8) bool {
+    return std.meta.trait.hasField(name)(T);
 }
 
 test "Field" {

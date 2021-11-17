@@ -5,7 +5,7 @@ const concept = "UnsignedIntegral";
 pub fn unsignedIntegral(value: anytype) void {
     const T = @TypeOf(value);
 
-    switch (traits.isIntegral(T) and !traits.isSignedIntegral(T)) {
+    switch (comptime traits.isIntegral(T) and !traits.isSignedIntegral(T)) {
         true => {},
         false => @compileError("concept " ++ concept ++ " was not satisfied"),
     }

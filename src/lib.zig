@@ -8,6 +8,7 @@ pub fn requires(value: anytype, concepts: anytype) void {
     require(@This().tuple, concepts);
 
     inline for (concepts) |concept| {
+        require(@This().is, .{ concept, fn (anytype) void });
         require(concept, value);
     }
 }

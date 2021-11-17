@@ -1,9 +1,9 @@
 const concepts = @import("../concepts.zig");
 const traits = @import("../traits.zig");
 
-const concept = "Is";
+const concept = "Field";
 
-pub fn is(value: anytype) void {
+pub fn field(value: anytype) void {
     concepts.tuple(value);
 
     const Value = @TypeOf(value);
@@ -12,14 +12,16 @@ pub fn is(value: anytype) void {
         @compileError("expected two-tuple, found `" ++ @typeName(Value) ++ "`");
     }
 
-    const T = @TypeOf(value[0]);
-    const Expected = value[1];
+    const T = value[0];
+    const name = value[1];
 
-    if (comptime !traits.is(@TypeOf(Expected), type)) {
-        @compileError("expected type, found `" ++ @typeName(Value) ++ "`");
+    if (comptime !traits.is(@TypeOf(T), type)) {
+        @compileError("expected type, found `" ++ @typeName(@TypeOf(T)) ++ "`");
     }
 
-    if (T != Expected) {
+    concepts.string(name);
+
+    if (comptime !traits.containsField(T, name)) {
         @compileError("concept " ++ concept ++ " was not satisfied");
     }
 }

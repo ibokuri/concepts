@@ -1,4 +1,5 @@
 pub usingnamespace @import("concepts/extern.zig");
+pub usingnamespace @import("concepts/field.zig");
 pub usingnamespace @import("concepts/float.zig");
 pub usingnamespace @import("concepts/integral.zig");
 pub usingnamespace @import("concepts/is.zig");

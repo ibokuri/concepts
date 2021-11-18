@@ -16,7 +16,6 @@ The Concepts library provides compile-time validation of type constraints via
 
 #### [Concepts](src/concepts)
 
-- `arrayList` - Specifies that a type is a `std.ArrayList` type.
 - `container` - Specifies that a type is a container type.
 - `decl` - Specifies that a type contains a given declaration.
 - `extern` - Specifies that a type has an `extern` in-memory layout.

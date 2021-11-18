@@ -1,4 +1,3 @@
-pub usingnamespace @import("concepts/array_list.zig");
 pub usingnamespace @import("concepts/container.zig");
 pub usingnamespace @import("concepts/decl.zig");
 pub usingnamespace @import("concepts/extern.zig");

@@ -5,10 +5,3 @@ pkgs:
     license: MIT
     source_url: "https://github.com/ibokuri/concepts"
     root: src/lib.zig
-    files:
-      README.md
-      LICENSE
-      build.zig
-      src/*.zig
-      src/concepts/*.zig
-      src/traits/*.zig

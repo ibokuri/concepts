@@ -13,19 +13,7 @@ pub fn arrayList(T: anytype) void {
     }
 
     comptime {
-        if (!concepts.traits.isContainer(T)) {
-            concepts.fail("ArrayList", "type `" ++ name ++ "` is not a container");
-        }
-
-        if (!concepts.traits.containsDecl("Slice", T)) {
-            concepts.fail("ArrayList", "missing `Slice` declaration");
-        }
-
-        if (!concepts.traits.isSlice(T.Slice)) {
-            concepts.fail("ArrayList", "`Slice` declaration is not a slice");
-        }
-
-        if (!concepts.traits.is(T, std.ArrayList(std.meta.Child(T.Slice)))) {
+        if (!std.mem.startsWith(u8, @typeName(T), "std.array_list")) {
             concepts.fail("ArrayList", "`" ++ name ++ "` is not `std.ArrayList`");
         }
     }

@@ -1,6 +1,6 @@
 const std = @import("std");
 
-pub fn containsDecl(comptime name: []const u8, comptime T: type) bool {
+pub fn containsDecl(comptime T: type, comptime name: []const u8) bool {
     return @hasDecl(T, name);
 }
 
@@ -16,9 +16,9 @@ test "Decl" {
         pub fn useless() void {}
     };
 
-    try std.testing.expect(!containsDecl("a", A));
-    try std.testing.expect(containsDecl("a", B));
-    try std.testing.expect(containsDecl("b", B));
-    try std.testing.expect(containsDecl("useless", B));
-    try std.testing.expect(!containsDecl("c", B));
+    try std.testing.expect(!containsDecl(A, "a"));
+    try std.testing.expect(containsDecl(B, "a"));
+    try std.testing.expect(containsDecl(B, "b"));
+    try std.testing.expect(containsDecl(B, "useless"));
+    try std.testing.expect(!containsDecl(B, "c"));
 }

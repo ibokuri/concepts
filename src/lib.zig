@@ -9,10 +9,10 @@ pub fn require(comptime concept: fn (anytype) void, value: anytype) void {
 }
 
 pub fn requires(concepts: anytype, value: anytype) void {
-    require(@This().tuple, concepts);
+    require(@This().tuple, @TypeOf(concepts));
 
     inline for (concepts) |concept| {
-        require(@This().is, .{ concept, fn (anytype) void });
+        require(@This().is, .{ @TypeOf(concept), fn (anytype) void });
         require(concept, value);
     }
 }

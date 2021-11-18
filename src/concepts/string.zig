@@ -4,14 +4,12 @@ const concept = "String";
 
 pub fn string(T: anytype) void {
     comptime {
-        if (!concepts.traits.is(@TypeOf(T), type)) {
-            concepts.err(concept, "expected type `type`, found `" ++ @typeName(@TypeOf(T)) ++ "`");
-        }
-    }
+        // Invariants
+        concepts.is(.{ @TypeOf(T), type });
 
-    comptime {
+        // Constraints
         if (!concepts.traits.isString(T)) {
-            concepts.fail(concept, "");
+            concepts.fail(concept, "type `" ++ @typeName(T) ++ "` is not a string type");
         }
     }
 }

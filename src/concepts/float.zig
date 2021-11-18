@@ -4,14 +4,12 @@ const concept = "Float";
 
 pub fn float(T: anytype) void {
     comptime {
-        if (!concepts.traits.is(@TypeOf(T), type)) {
-            concepts.err(concept, "expected type `type`, found `" ++ @typeName(@TypeOf(T)) ++ "`");
-        }
-    }
+        // Invariants
+        concepts.is(.{ @TypeOf(T), type });
 
-    comptime {
+        // Constraints
         if (!concepts.traits.isFloat(T)) {
-            concepts.fail(concept, "");
+            concepts.fail(concept, "type `" ++ @typeName(T) ++ "` is not a floating-point type");
         }
     }
 }

@@ -4,13 +4,12 @@ const concept = "Integral";
 
 pub fn integral(T: anytype) void {
     comptime {
-        if (!concepts.traits.is(@TypeOf(T), type)) {
-            concepts.err(concept, "expected type `type`, found `" ++ @typeName(@TypeOf(T)) ++ "`");
-        }
-    }
-    comptime {
+        // Invariants
+        concepts.is(.{ @TypeOf(T), type });
+
+        // Constraints
         if (!concepts.traits.isIntegral(T)) {
-            concepts.fail(concept, "");
+            concepts.fail(concept, "type `" ++ @typeName(T) ++ "` is not an integral type");
         }
     }
 }

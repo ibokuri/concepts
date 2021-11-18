@@ -4,14 +4,12 @@ const concept = "Slice";
 
 pub fn slice(T: anytype) void {
     comptime {
-        if (!concepts.traits.is(@TypeOf(T), type)) {
-            concepts.err(concept, "expected type `type`, found `" ++ @typeName(@TypeOf(T)) ++ "`");
-        }
-    }
+        // Invariants
+        concepts.is(.{ @TypeOf(T), type });
 
-    comptime {
+        // Constraints
         if (!concepts.traits.isSlice(T)) {
-            concepts.fail(concept, "");
+            concepts.fail(concept, "type `" ++ @typeName(T) ++ "` is not a slice type");
         }
     }
 }

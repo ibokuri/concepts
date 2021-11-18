@@ -14,22 +14,22 @@ pub fn field(value: anytype) void {
             concepts.err(concept, "expected two-tuple, found `" ++ @typeName(T) ++ "`");
         }
 
-        if (!concepts.traits.is(@TypeOf(value[0]), type)) {
-            concepts.err(concept, "expected type `type`, found `" ++ @typeName(@TypeOf(value[0])) ++ "`");
+        if (!concepts.traits.isString(@TypeOf(value[0]))) {
+            concepts.err(concept, "expected comptime-known string, found `" ++ @typeName(@TypeOf(value[0])) ++ "`");
         }
 
-        if (!concepts.traits.isString(@TypeOf(value[1]))) {
-            concepts.err(concept, "expected comptime-known string, found `" ++ @typeName(@TypeOf(value[1])) ++ "`");
+        if (!concepts.traits.is(@TypeOf(value[1]), type)) {
+            concepts.err(concept, "expected type `type`, found `" ++ @typeName(@TypeOf(value[1])) ++ "`");
         }
     }
 
     comptime {
-        if (!concepts.traits.isContainer(value[0])) {
-            concepts.fail(concept, "type `" ++ @typeName(value[0]) ++ "` is not a container");
+        if (!concepts.traits.isContainer(value[1])) {
+            concepts.fail(concept, "type `" ++ @typeName(value[1]) ++ "` is not a container");
         }
 
         if (!concepts.traits.containsField(value[0], value[1])) {
-            concepts.fail(concept, "type `" ++ @typeName(value[0]) ++ "` has no `" ++ value[1] ++ "` field");
+            concepts.fail(concept, "type `" ++ @typeName(value[1]) ++ "` has no `" ++ value[0] ++ "` field");
         }
     }
 }

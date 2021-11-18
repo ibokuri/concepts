@@ -1,6 +1,6 @@
 const std = @import("std");
 
-pub fn containsField(comptime T: type, comptime name: []const u8) bool {
+pub fn containsField(comptime name: []const u8, comptime T: type) bool {
     return std.meta.trait.hasField(name)(T);
 }
 
@@ -9,10 +9,10 @@ test "Field" {
         value: u32,
     };
 
-    try std.testing.expect(containsField(T, "value"));
+    try std.testing.expect(containsField("value", T));
 
-    try std.testing.expect(!containsField(*T, "value"));
-    try std.testing.expect(!containsField(T, "x"));
-    try std.testing.expect(!containsField(**T, "x"));
-    try std.testing.expect(!containsField(u8, "value"));
+    try std.testing.expect(!containsField("value", *T));
+    try std.testing.expect(!containsField("x", T));
+    try std.testing.expect(!containsField("x", **T));
+    try std.testing.expect(!containsField("value", u8));
 }

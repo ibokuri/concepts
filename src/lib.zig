@@ -8,7 +8,7 @@ pub fn require(comptime concept: fn (anytype) void, value: anytype) void {
     return concept(value);
 }
 
-pub fn requires(value: anytype, concepts: anytype) void {
+pub fn requires(concepts: anytype, value: anytype) void {
     require(@This().tuple, concepts);
 
     inline for (concepts) |concept| {

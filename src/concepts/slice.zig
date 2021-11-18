@@ -1,11 +1,11 @@
-const traits = @import("../traits.zig");
+const concepts = @import("../lib.zig");
 
 const concept = "Slice";
 
 pub fn slice(value: anytype) void {
-    const T = @TypeOf(value);
-
-    if (comptime !traits.isSlice(T)) {
-        @compileError("concept " ++ concept ++ " was not satisfied");
+    comptime {
+        if (!concepts.traits.isSlice(@TypeOf(value))) {
+            concepts.fail(concept, "");
+        }
     }
 }

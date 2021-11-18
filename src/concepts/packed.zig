@@ -1,11 +1,11 @@
-const traits = @import("../traits.zig");
+const concepts = @import("../lib.zig");
 
 const concept = "Packed";
 
 pub fn @"packed"(value: anytype) void {
-    const T = @TypeOf(value);
-
-    if (comptime !traits.isPacked(T)) {
-        @compileError("concept " ++ concept ++ " was not satisfied");
+    comptime {
+        if (!concepts.traits.isPacked(@TypeOf(value))) {
+            concepts.fail(concept, "");
+        }
     }
 }

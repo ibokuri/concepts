@@ -1,9 +1,11 @@
 const concepts = @import("../lib.zig");
 
-const name = "Float";
+const concept = "Float";
 
 pub fn float(value: anytype) void {
-    if (comptime !concepts.traits.isFloat(@TypeOf(value))) {
-        concepts.fail(name, "");
+    comptime {
+        if (!concepts.traits.isFloat(@TypeOf(value))) {
+            concepts.fail(concept, "");
+        }
     }
 }

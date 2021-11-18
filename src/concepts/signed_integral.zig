@@ -1,11 +1,11 @@
-const traits = @import("../traits.zig");
+const concepts = @import("../lib.zig");
 
 const concept = "SignedIntegral";
 
 pub fn signedIntegral(value: anytype) void {
-    const T = @TypeOf(value);
-
-    if (comptime !traits.isSignedIntegral(T)) {
-        @compileError("concept " ++ concept ++ " was not satisfied");
+    comptime {
+        if (!concepts.traits.isSignedIntegral(@TypeOf(value))) {
+            concepts.fail(concept, "");
+        }
     }
 }

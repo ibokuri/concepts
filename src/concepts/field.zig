@@ -3,15 +3,15 @@ const concepts = @import("../lib.zig");
 const concept = "Field";
 
 pub fn field(value: anytype) void {
-    const Value = @TypeOf(value);
+    const T = @TypeOf(value);
 
     comptime {
-        if (!concepts.traits.isTuple(@TypeOf(value))) {
-            concepts.err(concept, "expected tuple, found `" ++ @typeName(Value) ++ "`");
+        if (!concepts.traits.isTuple(T)) {
+            concepts.err(concept, "expected tuple, found `" ++ @typeName(T) ++ "`");
         }
 
         if (value.len != 2) {
-            concepts.err(concept, "expected two-tuple, found `" ++ @typeName(Value) ++ "`");
+            concepts.err(concept, "expected two-tuple, found `" ++ @typeName(T) ++ "`");
         }
 
         if (!concepts.traits.is(@TypeOf(value[0]), type)) {

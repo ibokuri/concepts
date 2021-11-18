@@ -1,7 +1,7 @@
 # Concepts
 
-The `Concepts` library provides compile-time validation of value constraints
-via **traits** and **concepts**.
+The Concepts library provides compile-time validation of value constraints via
+**traits** and **concepts**.
 
 ## Contributing
 

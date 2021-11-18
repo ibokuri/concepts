@@ -1,11 +1,17 @@
 const concepts = @import("../lib.zig");
 
-const name = "Container";
+const concept = "Container";
 
-pub fn container(value: anytype) void {
+pub fn container(T: anytype) void {
     comptime {
-        if (!concepts.traits.isContainer(@TypeOf(value))) {
-            concepts.fail(name, "");
+        if (!concepts.traits.is(@TypeOf(T), type)) {
+            concepts.err(concept, "expected type `type`, found `" ++ @typeName(T) ++ "`");
+        }
+    }
+
+    comptime {
+        if (!concepts.traits.isContainer(T)) {
+            concepts.fail(concept, "");
         }
     }
 }

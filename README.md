@@ -9,8 +9,8 @@ The Concepts library provides compile-time validation of type constraints via
 
 #### [General](src/lib.zig)
 
-- `fail` - Generates a compile error due to a concept being unsatisfied.
 - `err` - Generates a compile error due to an error during concept validation.
+- `fail` - Generates a compile error due to a concept being unsatisfied.
 - `require` - Validates a concept.
 - `requires` - Validates one or more concepts.
 

@@ -11,5 +11,3 @@ pub usingnamespace @import("traits/is_signed_integral.zig");
 pub usingnamespace @import("traits/is_slice.zig");
 pub usingnamespace @import("traits/is_string.zig");
 pub usingnamespace @import("traits/is_tuple.zig");
-
-pub usingnamespace @import("traits/starts_with.zig");

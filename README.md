@@ -3,6 +3,67 @@
 The Concepts library provides compile-time validation of type constraints via
 **traits** and **concepts**.
 
+## Contents
+
+* [Installation](#installation)
+* [Motivation](#motivation)
+* [API Reference](#api-reference)
+* [Contributing](#contributing)
+* [License](#license)
+
+## Installation
+
+### Manual
+
+1. Install the library.
+
+    ```console
+    git clone https://github.com/ibokuri/concepts lib/concepts
+    ```
+
+2. Add the library as a package in `build.zig`.
+
+    ```diff
+    const std = @import("std");
+
+    pub fn build(b: *std.build.Builder) void {
+
+        ...
+
+        obj.setTarget(target);
+        obj.setBuildMode(mode);
+    +   obj.addPackagePath("concepts", "lib/concepts/src/lib.zig");
+        obj.install();
+    }
+    ```
+
+### Gyro
+
+1. Install the library.
+
+    ```console
+    gyro add -s github ibokuri/concepts
+    gyro fetch
+    gyro update
+    ```
+
+2. Add the library as a package in `build.zig`.
+
+    ```diff
+    const std = @import("std");
+    +const pkgs = @import("deps.zig").pkgs;
+
+    pub fn build(b: *std.build.Builder) void {
+
+        ...
+
+        obj.setTarget(target);
+        obj.setBuildMode(mode);
+    +   pkgs.addAllTo(obj);
+        obj.install();
+    }
+    ```
+
 ## Motivation
 
 In general, there are two ways to enforce type constraints in Zig: compile-time

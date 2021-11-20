@@ -1,6 +1,10 @@
 const std = @import("std");
 
+const concepts = @import("../lib.zig");
+
 pub fn hasDecl(comptime T: type, comptime name: []const u8) bool {
+    comptime concepts.container(T);
+
     return @hasDecl(T, name);
 }
 

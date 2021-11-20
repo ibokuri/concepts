@@ -50,10 +50,13 @@ The Concepts library provides compile-time validation of type constraints via
 
 ## Motivation
 
+In general, there are two ways to enforce type constraints in Zig: compile-time
+duck typing and type reflection.
+
 ### Duck Typing
 
-The problem with compile-time duck typing is that the error messages it
-generates are horrible:
+The problem with duck typing is that the error messages it generates are pretty
+awful:
 
 ```
 error: no field named 'items' in '[3]u8'
@@ -67,34 +70,23 @@ note: called from here
 
 ```
 
-Can you guess what type `print` expect its input to be? If you said
-`std.ArrayList` because you saw the `items` field access, congratulations! You
-*may* be right. `print` could also expect its input to be `struct { items:
-[5]bool }` or any other type with an iterable `items` field. Without more
-information, *guessing* the type constraints of `print` is the best we can do.
+Can you guess what type `print` expects its input to be? The answer is nobody
+knows! From the compiler error we got, `print` could accept a `std.ArrayList`,
+`struct { items: [5]bool }`, or any other type with an iterable `items` field!
 
 ### Type Reflection
 
-Type reflection, on the other hand, is pretty awesome for enforcing type
-constraints. For instance, by using `@TypeOf`, `@typeName`, and
-`std.mem.startsWith`, we can improve our compiler error with a few lines of
-code:
+Another way to enforce type constraints is by using type reflection.
+Essentially, you query a type for information and then raise a compiler error
+(with whatever message you want) if the information does not match your set of
+constraints.
 
-```
-error: expected `std.ArrayList`, found `[3]u8`
-    @compileError("expected `std.ArrayList`, found `" ++ @typeName(@TypeOf(list)) ++ "`");
-
-note: called from here
-    print([_]u8{ 1, 2, 3 });
-
-note: called from here
-    pub fn main() anyerror!void {
-```
-
-Unfortunately (at least, from my experience), enforcing type constraints using
-the language and standard library tends to become unwieldy and haphazard,
-especially when working with complex constraints or things like generic
-interfaces.
+Unfortunately, I've found that type reflection is only nice to use when you
+have a handful of simple type constraints. When you need consistent and
+thorough enforcement of many (potentially complex) type constraints, using
+reflection quickly becomes tedious. You end up with a bunch of copy-and-pasted
+`if` or `switch` statements that differ only in the string literal passed to
+`@compileError`.
 
 ## Contributing
 

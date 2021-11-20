@@ -4,21 +4,8 @@ pub const traits = struct {
     pub usingnamespace @import("traits.zig");
 };
 
-pub fn require(comptime concept: fn (anytype) void, value: anytype) void {
-    return concept(value);
-}
-
-pub fn requires(concepts: anytype, value: anytype) void {
-    require(@This().tuple, @TypeOf(concepts));
-
-    inline for (concepts) |concept| {
-        require(@This().is, .{ @TypeOf(concept), fn (anytype) void });
-        require(concept, value);
-    }
-}
-
-pub fn fail(comptime concept: []const u8, comptime msg: []const u8) void {
-    const base = "concept `" ++ concept ++ "` was not satisfied";
+pub fn err(comptime concept: []const u8, comptime msg: []const u8) void {
+    const base = "concept `" ++ concept ++ "` could not be satisfied";
     const extra = " (" ++ msg ++ ")";
 
     switch (msg.len) {
@@ -27,8 +14,8 @@ pub fn fail(comptime concept: []const u8, comptime msg: []const u8) void {
     }
 }
 
-pub fn err(comptime concept: []const u8, comptime msg: []const u8) void {
-    const base = "concept `" ++ concept ++ "` could not be satisfied";
+pub fn fail(comptime concept: []const u8, comptime msg: []const u8) void {
+    const base = "concept `" ++ concept ++ "` was not satisfied";
     const extra = " (" ++ msg ++ ")";
 
     switch (msg.len) {

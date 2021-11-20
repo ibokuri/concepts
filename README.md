@@ -110,10 +110,8 @@ reflection quickly becomes tedious. You end up with a bunch of copy-and-pasted
 
 #### [General](src/lib.zig)
 
-- `err` - Generates a compile error due to an invariant violation.
+- `err` - Generates a compile error due to an invariant violation during concept validation.
 - `fail` - Generates a compile error due to a concept being unsatisfied.
-- `require` - Validates a concept.
-- `requires` - Validates one or more concepts.
 
 #### [Concepts](src/concepts)
 

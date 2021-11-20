@@ -4,7 +4,7 @@ pub fn isFloat(comptime T: type) bool {
     return std.meta.trait.isFloat(T);
 }
 
-test "Float" {
+test {
     comptime {
         try std.testing.expect(isFloat(comptime_float));
         try std.testing.expect(isFloat(f16));

@@ -4,7 +4,7 @@ pub fn isSame(comptime A: type, comptime B: type) bool {
     return A == B;
 }
 
-test "Is" {
+test {
     comptime {
         try std.testing.expect(isSame(@TypeOf(1), comptime_int));
         try std.testing.expect(isSame(@TypeOf(1.0), comptime_float));

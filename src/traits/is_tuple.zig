@@ -4,7 +4,7 @@ pub fn isTuple(comptime T: type) bool {
     return std.meta.trait.isTuple(T);
 }
 
-test "Tuple" {
+test {
     comptime {
         try std.testing.expect(isTuple(std.meta.Tuple(&.{ i8, u8 })));
 

@@ -8,7 +8,7 @@ pub fn hasDecl(comptime T: type, comptime name: []const u8) bool {
     return @hasDecl(T, name);
 }
 
-test "Decl" {
+test {
     const A = struct {};
     const B = struct {
         pub var a: u32 = undefined;

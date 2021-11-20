@@ -4,7 +4,7 @@ pub fn isSlice(comptime T: type) bool {
     return std.meta.trait.isSlice(T);
 }
 
-test "Slice" {
+test {
     const array = [_]u8{0} ** 10;
     var zero: usize = 0;
 

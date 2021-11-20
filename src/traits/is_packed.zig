@@ -4,7 +4,7 @@ pub fn isPacked(comptime T: type) bool {
     return std.meta.trait.isPacked(T);
 }
 
-test "Packed" {
+test {
     const A = packed struct {};
     const B = struct {};
 

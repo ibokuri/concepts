@@ -4,7 +4,7 @@ pub fn isContainer(comptime T: type) bool {
     return std.meta.trait.isContainer(T);
 }
 
-test "Container" {
+test {
     const Struct = struct {};
     const Union = union { a: void };
     const Enum = enum { A, B };

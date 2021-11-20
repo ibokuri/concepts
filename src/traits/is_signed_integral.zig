@@ -4,7 +4,7 @@ pub fn isSignedIntegral(comptime T: type) bool {
     return std.meta.trait.isSignedInt(T);
 }
 
-test "Integral" {
+test {
     comptime {
         try std.testing.expect(isSignedIntegral(comptime_int));
         try std.testing.expect(isSignedIntegral(i8));

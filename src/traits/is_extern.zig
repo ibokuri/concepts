@@ -4,7 +4,7 @@ pub fn isExtern(comptime T: type) bool {
     return std.meta.trait.isExtern(T);
 }
 
-test "Extern" {
+test {
     const A = extern struct {};
     const B = struct {};
 

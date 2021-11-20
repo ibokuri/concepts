@@ -4,7 +4,7 @@ pub fn isString(comptime T: type) bool {
     return std.meta.trait.isZigString(T);
 }
 
-test "String" {
+test {
     try std.testing.expect(isString([]const u8));
     try std.testing.expect(isString([]u8));
     try std.testing.expect(isString([:0]const u8));

@@ -4,7 +4,7 @@ pub fn isIntegral(comptime T: type) bool {
     return std.meta.trait.isIntegral(T);
 }
 
-test "Integral" {
+test {
     comptime {
         try std.testing.expect(isIntegral(comptime_int));
         try std.testing.expect(isIntegral(i8));

@@ -5,7 +5,7 @@ const concept = "String";
 pub fn string(T: anytype) void {
     comptime {
         // Invariants
-        concepts.is(@TypeOf(T), type);
+        concepts.same(@TypeOf(T), type);
 
         // Constraints
         if (!concepts.traits.isString(T)) {

@@ -5,7 +5,7 @@ const concept = "Slice";
 pub fn slice(T: anytype) void {
     comptime {
         // Invariants
-        concepts.is(@TypeOf(T), type);
+        concepts.same(@TypeOf(T), type);
 
         // Constraints
         if (!concepts.traits.isSlice(T)) {

@@ -1,8 +1,8 @@
 const concepts = @import("../lib.zig");
 
-const concept = "Is";
+const concept = "Same";
 
-pub fn is(comptime A: type, comptime B: type) void {
+pub fn same(comptime A: type, comptime B: type) void {
     comptime {
         if (!concepts.traits.isSame(A, B)) {
             concepts.fail(concept, "");

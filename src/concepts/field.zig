@@ -13,7 +13,7 @@ pub fn field(tuple: anytype) void {
             concepts.err(concept, "expected two-tuple, found `" ++ @typeName(T) ++ "`");
         }
 
-        concepts.is(@TypeOf(tuple[0]), type);
+        concepts.same(@TypeOf(tuple[0]), type);
         concepts.string(@TypeOf(tuple[1]));
 
         // Constraints

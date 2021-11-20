@@ -5,7 +5,7 @@ const concept = "UnsignedIntegral";
 pub fn unsignedIntegral(T: anytype) void {
     comptime {
         // Invariants
-        concepts.is(@TypeOf(T), type);
+        concepts.same(@TypeOf(T), type);
 
         // Constraints
         if (!concepts.traits.isIntegral(T) or concepts.traits.isSignedIntegral(T)) {

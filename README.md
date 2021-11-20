@@ -127,8 +127,8 @@ reflection quickly becomes tedious. You end up with a bunch of copy-and-pasted
 - `field` - Specifies that a type contains a given field.
 - `float` - Specifies that a type is a floating-point type.
 - `integral` - Specifies that a type is an integral type.
-- `is` - Specifies that a type is the same as another type.
 - `packed` - Specifies that a type has a `packed` in-memory layout.
+- `same` - Specifies that a type is the same as another type.
 - `signedIntegral` - Specifies that a type is an integral type that is signed.
 - `slice` - Specifies that a type is a slice type.
 - `string` - Specifies that a type is a string type.

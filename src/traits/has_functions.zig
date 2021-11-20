@@ -12,12 +12,10 @@ pub fn hasFunctions(comptime T: type, comptime names: anytype) bool {
         }
 
         // Constraints
-        if (!concepts.traits.isContainer(T)) {
-            return false;
-        }
-
         for (names) |name| {
-            if (!concepts.traits.hasFunction(T, name)) return false;
+            if (!concepts.traits.hasFunction(T, name)) {
+                return false;
+            }
         }
 
         return true;

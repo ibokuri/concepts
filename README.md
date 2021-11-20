@@ -135,8 +135,11 @@ reflection quickly becomes tedious. You end up with a bunch of copy-and-pasted
 #### [Traits](src/traits)
 
 - `hasDecl` - Checks if a type contains a given declaration.
+- `hasDecls` - Checks if a type contains a given set of declarations.
 - `hasField` - Checks if a type contains a given field.
+- `hasFields` - Checks if a type contains a given set of fields.
 - `hasFunction` - Checks if a type contains a given function.
+- `hasFunctions` - Checks if a type contains a given set of functions.
 - `isContainer` - Checks if a type is a container type.
 - `isExtern` - Checks if a type has an `extern` in-memory layout.
 - `isFloat` - Checks if a type is a floating-point type.

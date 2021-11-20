@@ -3,9 +3,13 @@ const std = @import("std");
 const concepts = @import("../lib.zig");
 
 pub fn hasDecl(comptime T: type, comptime name: []const u8) bool {
-    comptime if (!concepts.traits.isContainer(T)) return false;
+    comptime {
+        if (!concepts.traits.isContainer(T)) {
+            return false;
+        }
 
-    return @hasDecl(T, name);
+        return @hasDecl(T, name);
+    }
 }
 
 test {

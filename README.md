@@ -3,6 +3,46 @@
 The Concepts library provides compile-time validation of type constraints via
 **traits** and **concepts**.
 
+## Motivation
+
+In general, there are two ways to enforce type constraints in Zig: compile-time
+duck typing and type reflection.
+
+### Duck Typing
+
+The problem with duck typing is that the error messages it generates are pretty
+awful:
+
+```
+error: no field named 'items' in '[3]u8'
+    for (list.items) |v| {
+
+note: called from here
+    print([_]u8{ 1, 2, 3 });
+
+note: called from here
+    pub fn main() anyerror!void {
+
+```
+
+Can you guess what type `print` expects its input to be? The answer is nobody
+knows! From the compiler error we got, `print` could accept a `std.ArrayList`,
+`struct { items: [5]bool }`, or any other type with an iterable `items` field!
+
+### Type Reflection
+
+Another way to enforce type constraints is by using type reflection.
+Essentially, you query a type for information and then raise a compiler error
+(with whatever message you want) if the information does not match your set of
+constraints.
+
+Unfortunately, I've found that type reflection is only nice to use when you
+have a handful of simple type constraints. When you need consistent and
+thorough enforcement of many (potentially complex) type constraints, using
+reflection quickly becomes tedious. You end up with a bunch of copy-and-pasted
+`if` or `switch` statements that differ only in the string literal passed to
+`@compileError`.
+
 ## API Reference
 
 ### `concepts`
@@ -47,46 +87,6 @@ The Concepts library provides compile-time validation of type constraints via
 - `isString` - Checks if a type is a string type.
 - `isTuple` - Checks if a type is a tuple type.
 - `isUnsignedIntegral` - Checks if a type is an integral type that is unsigned.
-
-## Motivation
-
-In general, there are two ways to enforce type constraints in Zig: compile-time
-duck typing and type reflection.
-
-### Duck Typing
-
-The problem with duck typing is that the error messages it generates are pretty
-awful:
-
-```
-error: no field named 'items' in '[3]u8'
-    for (list.items) |v| {
-
-note: called from here
-    print([_]u8{ 1, 2, 3 });
-
-note: called from here
-    pub fn main() anyerror!void {
-
-```
-
-Can you guess what type `print` expects its input to be? The answer is nobody
-knows! From the compiler error we got, `print` could accept a `std.ArrayList`,
-`struct { items: [5]bool }`, or any other type with an iterable `items` field!
-
-### Type Reflection
-
-Another way to enforce type constraints is by using type reflection.
-Essentially, you query a type for information and then raise a compiler error
-(with whatever message you want) if the information does not match your set of
-constraints.
-
-Unfortunately, I've found that type reflection is only nice to use when you
-have a handful of simple type constraints. When you need consistent and
-thorough enforcement of many (potentially complex) type constraints, using
-reflection quickly becomes tedious. You end up with a bunch of copy-and-pasted
-`if` or `switch` statements that differ only in the string literal passed to
-`@compileError`.
 
 ## Contributing
 

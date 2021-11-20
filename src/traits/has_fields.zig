@@ -15,6 +15,7 @@ pub fn hasFields(comptime T: type, comptime names: anytype) bool {
         if (names.len == 0) {
             return false;
         }
+
         for (names) |name| {
             if (!concepts.traits.hasField(T, name)) {
                 return false;

@@ -37,6 +37,22 @@ const concepts = struct {
 
 pub usingnamespace concepts;
 
+pub fn Concept(comptime concept: []const u8, comptime msg: []const u8) fn (anytype) void {
+    const Closure = struct {
+        fn f(results: anytype) void {
+            comptime {
+                concepts.tuple(@TypeOf(results));
+
+                for (results) |result| concepts.same(@TypeOf(result), bool);
+
+                for (results) |result| if (!result) fail(concept, msg);
+            }
+        }
+    };
+
+    return Closure.f;
+}
+
 pub fn err(comptime concept: []const u8, comptime msg: []const u8) void {
     const base = "concept `" ++ concept ++ "` could not be satisfied";
     const extra = " (" ++ msg ++ ")";

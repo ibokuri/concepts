@@ -23,7 +23,7 @@ const concepts = @import("concepts");
 
 /// Specifies that a type is a `std.ArrayList`.
 fn arrayList(comptime T: type) void {
-    comptime concepts.require("ArrayList", "")(.{
+    comptime concepts.Concept("ArrayList", "")(.{
         concepts.traits.isContainer(T),
         concepts.traits.hasDecl(T, "Slice"),
         concepts.traits.isSlice(T.Slice),

@@ -5,17 +5,11 @@ The Concepts library provides compile-time validation of type constraints via
 
 ## Contents
 
-* [Overview](#overview)
 * [Installation](#installation)
 * [Motivation](#motivation)
 * [API Reference](#api-reference)
 * [Contributing](#contributing)
 * [License](#license)
-
-## Overview
-
-A trait is a property of a type (e.g., `IsIntegral`). A concept is a named set
-of traits (e.g., `Integral`);
 
 ## Installation
 

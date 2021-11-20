@@ -4,6 +4,7 @@ pub usingnamespace @import("traits/has_field.zig");
 pub usingnamespace @import("traits/is_container.zig");
 pub usingnamespace @import("traits/is_extern.zig");
 pub usingnamespace @import("traits/is_float.zig");
+pub usingnamespace @import("traits/is_function.zig");
 pub usingnamespace @import("traits/is_integral.zig");
 pub usingnamespace @import("traits/is_packed.zig");
 pub usingnamespace @import("traits/is_same.zig");

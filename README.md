@@ -141,12 +141,12 @@ reflection quickly becomes tedious. You end up with a bunch of copy-and-pasted
 
 - `hasDecl` - Checks if a type contains a given declaration.
 - `hasField` - Checks if a type contains a given field.
-- `is` - Checks if two types are equal.
 - `isContainer` - Checks if a type is a container type.
 - `isExtern` - Checks if a type has an `extern` in-memory layout.
 - `isFloat` - Checks if a type is a floating-point type.
 - `isIntegral` - Checks if a type is an integral type.
 - `isPacked` - Checks if a type has a `packed` in-memory layout.
+- `isSame` - Checks if two types are equal.
 - `isSignedIntegral` - Checks if a type is an integral type that is signed.
 - `isSlice` - Checks if a type is a slice type.
 - `isString` - Checks if a type is a string type.

@@ -145,7 +145,6 @@ reflection quickly becomes tedious. You end up with a bunch of copy-and-pasted
 - `isSlice` - Checks if a type is a slice type.
 - `isString` - Checks if a type is a string type.
 - `isTuple` - Checks if a type is a tuple type.
-- `isUnsignedIntegral` - Checks if a type is an integral type that is unsigned.
 
 ## Contributing
 

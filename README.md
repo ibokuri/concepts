@@ -14,8 +14,8 @@ The Concepts library provides compile-time validation of type constraints via
 
 ## Overview
 
-A trait is a property of a type (e.g., `IsIntegral`, `IsString`). A concept is
-a named set of traits (e.g., `Integral`, `String`);
+A trait is a property of a type (e.g., `IsIntegral`). A concept is a named set
+of traits (e.g., `Integral`);
 
 ## Installation
 
@@ -23,7 +23,7 @@ a named set of traits (e.g., `Integral`, `String`);
 
 1. Install the library.
 
-    ```console
+    ```
     git clone https://github.com/ibokuri/concepts lib/concepts
     ```
 
@@ -47,7 +47,7 @@ a named set of traits (e.g., `Integral`, `String`);
 
 1. Install the library.
 
-    ```console
+    ```
     gyro add -s github ibokuri/concepts
     gyro fetch
     gyro update

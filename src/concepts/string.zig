@@ -5,11 +5,11 @@ const concept = "String";
 pub fn string(T: anytype) void {
     comptime {
         // Invariants
-        concepts.is(.{ @TypeOf(T), type });
+        concepts.is(@TypeOf(T), type);
 
         // Constraints
         if (!concepts.traits.isString(T)) {
-            concepts.fail(concept, "type `" ++ @typeName(T) ++ "` is not a string type");
+            concepts.fail(concept, "");
         }
     }
 }

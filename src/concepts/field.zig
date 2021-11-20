@@ -13,16 +13,16 @@ pub fn field(tuple: anytype) void {
             concepts.err(concept, "expected two-tuple, found `" ++ @typeName(T) ++ "`");
         }
 
-        concepts.is(.{ @TypeOf(tuple[0]), type });
+        concepts.is(@TypeOf(tuple[0]), type);
         concepts.string(@TypeOf(tuple[1]));
 
         // Constraints
         if (!concepts.traits.isContainer(tuple[0])) {
-            concepts.fail(concept, "type `" ++ @typeName(tuple[0]) ++ "` is not a container");
+            concepts.fail(concept, "");
         }
 
         if (!concepts.traits.hasField(tuple[0], tuple[1])) {
-            concepts.fail(concept, "type `" ++ @typeName(tuple[0]) ++ "` has no `" ++ tuple[1] ++ "` field");
+            concepts.fail(concept, "");
         }
     }
 }

@@ -12,6 +12,9 @@ pub fn hasFields(comptime T: type, comptime names: anytype) bool {
         }
 
         // Constraints
+        if (names.len == 0) {
+            return false;
+        }
         for (names) |name| {
             if (!concepts.traits.hasField(T, name)) {
                 return false;
@@ -30,6 +33,7 @@ test {
 
     try std.testing.expect(hasFields(T, .{ "a", "b" }));
 
+    try std.testing.expect(!hasFields(T, .{}));
     try std.testing.expect(!hasFields(T, .{ "a", "c" }));
     try std.testing.expect(!hasFields(*T, .{ "a", "b" }));
     try std.testing.expect(!hasFields(**T, .{ "a", "b" }));

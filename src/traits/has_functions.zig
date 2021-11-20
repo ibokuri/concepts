@@ -12,6 +12,10 @@ pub fn hasFunctions(comptime T: type, comptime names: anytype) bool {
         }
 
         // Constraints
+        if (names.len == 0) {
+            return false;
+        }
+
         for (names) |name| {
             if (!concepts.traits.hasFunction(T, name)) {
                 return false;
@@ -29,6 +33,8 @@ test {
     };
 
     try std.testing.expect(hasFunctions(T, .{ "a", "b" }));
+
+    try std.testing.expect(!hasFunctions(T, .{}));
     try std.testing.expect(!hasFunctions(T, .{ "a", "non-existent" }));
     try std.testing.expect(!hasFunctions(u8, .{"a"}));
 }

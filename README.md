@@ -13,8 +13,8 @@ The Concepts library provides compile-time validation of type constraints.
 
 ## Overview
 
-A trait is a property requirement for a type (e.g., `isIntegral`). A concept is
-a named set of traits (e.g., `integral`).
+A trait is a property of a type (e.g., `isIntegral`). A concept is a named set
+of traits (e.g., `integral`).
 
 ```zig
 const std = @import("std");
@@ -32,11 +32,13 @@ fn arrayList(comptime T: type) void {
 }
 
 pub fn main() anyerror!void {
-    comptime concepts.integral(i32);
-    comptime concepts.same(i32, i32);
+    comptime {
+        concepts.integral(i32);
+        concepts.same(i32, i32);
 
-    comptime arrayList(std.ArrayList(u8));
-    comptime arrayList(std.ArrayListUnmanaged(u8)); // error: concept `ArrayList` was not satisfied
+        arrayList(std.ArrayList(u8));
+        arrayList(std.ArrayListUnmanaged(u8)); // error: concept `ArrayList` was not satisfied
+    }
 }
 ```
 

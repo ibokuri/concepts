@@ -1,7 +1,7 @@
 const std = @import("std");
 
 pub fn isContainer(comptime T: type) bool {
-    return std.meta.trait.isContainer(T);
+    comptime return std.meta.trait.isContainer(T);
 }
 
 test {

@@ -4,11 +4,42 @@ The Concepts library provides compile-time validation of type constraints.
 
 ## Contents
 
+* [Overview](#overview)
 * [Installation](#installation)
 * [Motivation](#motivation)
 * [API Reference](#api-reference)
 * [Contributing](#contributing)
 * [License](#license)
+
+## Overview
+
+A trait is a property requirement for a type (e.g., `isIntegral`). A concept is
+a named set of traits (e.g., `integral`).
+
+```zig
+const std = @import("std");
+
+const concepts = @import("concepts");
+
+/// Specifies that a type is a `std.ArrayList`.
+fn arrayList(comptime T: type) void {
+    comptime concepts.require("ArrayList", "")(.{
+        concepts.traits.isContainer(T),
+        concepts.traits.hasDecl(T, "Slice"),
+        concepts.traits.isSlice(T.Slice),
+        concepts.traits.isSame(T, std.ArrayList(std.meta.Child(T.Slice))),
+    });
+}
+
+pub fn main() anyerror!void {
+    comptime concepts.integral(i32);
+    comptime concepts.same(i32, i32);
+
+    comptime arrayList(std.ArrayList(u8));
+    comptime arrayList(std.ArrayListUnmanaged(u8)); // error: concept `ArrayList` was not satisfied
+}
+```
+
 
 ## Installation
 

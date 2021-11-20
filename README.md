@@ -121,6 +121,7 @@ reflection quickly becomes tedious. You end up with a bunch of copy-and-pasted
 - `field` - Specifies that a type contains a given field.
 - `float` - Specifies that a type is a floating-point type.
 - `integral` - Specifies that a type is an integral type.
+- `method` - Specifies that a type contains a given function.
 - `packed` - Specifies that a type has a `packed` in-memory layout.
 - `same` - Specifies that a type is the same as another type.
 - `signedIntegral` - Specifies that a type is an integral type that is signed.
@@ -135,6 +136,7 @@ reflection quickly becomes tedious. You end up with a bunch of copy-and-pasted
 
 - `hasDecl` - Checks if a type contains a given declaration.
 - `hasField` - Checks if a type contains a given field.
+- `hasFunction` - Checks if a type contains a given function.
 - `isContainer` - Checks if a type is a container type.
 - `isExtern` - Checks if a type has an `extern` in-memory layout.
 - `isFloat` - Checks if a type is a floating-point type.

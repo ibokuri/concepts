@@ -22,6 +22,7 @@ const concepts = struct {
     pub usingnamespace @import("concepts/field.zig");
     pub usingnamespace @import("concepts/float.zig");
     pub usingnamespace @import("concepts/integral.zig");
+    pub usingnamespace @import("concepts/method.zig");
     pub usingnamespace @import("concepts/packed.zig");
     pub usingnamespace @import("concepts/same.zig");
     pub usingnamespace @import("concepts/signed_integral.zig");

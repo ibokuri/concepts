@@ -4,7 +4,7 @@ const package_name = "concepts";
 const package_path = "src/lib.zig";
 
 const tests = [_][]const u8{
-    "src/traits.zig",
+    "src/lib.zig",
 };
 
 pub fn build(b: *std.build.Builder) void {

@@ -2,26 +2,13 @@ const concepts = @import("../lib.zig");
 
 const concept = "Decl";
 
-pub fn decl(tuple: anytype) void {
-    const T = @TypeOf(tuple);
-
+pub fn decl(comptime T: type, comptime name: []const u8) void {
     comptime {
         // Invariants
-        concepts.tuple(T);
-
-        if (tuple.len != 2) {
-            concepts.err(concept, "expected two-tuple, found `" ++ @typeName(T) ++ "`");
-        }
-
-        concepts.same(@TypeOf(tuple[0]), type);
-        concepts.string(@TypeOf(tuple[1]));
+        concepts.container(T);
 
         // Constraints
-        if (!concepts.traits.isContainer(tuple[0])) {
-            concepts.fail(concept, "");
-        }
-
-        if (!concepts.traits.hasDecl(tuple[0], tuple[1])) {
+        if (!concepts.traits.hasDecl(T, name)) {
             concepts.fail(concept, "");
         }
     }

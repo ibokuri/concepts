@@ -21,7 +21,7 @@ pub fn decl(tuple: anytype) void {
             concepts.fail(concept, "type `" ++ @typeName(tuple[0]) ++ "` is not a container");
         }
 
-        if (!concepts.traits.containsDecl(tuple[0], tuple[1])) {
+        if (!concepts.traits.hasDecl(tuple[0], tuple[1])) {
             concepts.fail(concept, "type `" ++ @typeName(tuple[0]) ++ "` has no `" ++ tuple[1] ++ "` declaration");
         }
     }

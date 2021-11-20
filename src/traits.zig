@@ -1,5 +1,5 @@
-pub usingnamespace @import("traits/contains_decl.zig");
-pub usingnamespace @import("traits/contains_field.zig");
+pub usingnamespace @import("traits/has_decl.zig");
+pub usingnamespace @import("traits/has_field.zig");
 
 pub usingnamespace @import("traits/is.zig");
 pub usingnamespace @import("traits/is_container.zig");

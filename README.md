@@ -139,8 +139,8 @@ reflection quickly becomes tedious. You end up with a bunch of copy-and-pasted
 
 #### [Traits](src/traits)
 
-- `containsDecl` - Checks if a type contains a given declaration.
-- `containsField` - Checks if a type contains a given field.
+- `hasDecl` - Checks if a type contains a given declaration.
+- `hasField` - Checks if a type contains a given field.
 - `is` - Checks if two types are equal.
 - `isContainer` - Checks if a type is a container type.
 - `isExtern` - Checks if a type has an `extern` in-memory layout.

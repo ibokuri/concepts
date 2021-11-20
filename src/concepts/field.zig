@@ -21,7 +21,7 @@ pub fn field(tuple: anytype) void {
             concepts.fail(concept, "type `" ++ @typeName(tuple[0]) ++ "` is not a container");
         }
 
-        if (!concepts.traits.containsField(tuple[0], tuple[1])) {
+        if (!concepts.traits.hasField(tuple[0], tuple[1])) {
             concepts.fail(concept, "type `" ++ @typeName(tuple[0]) ++ "` has no `" ++ tuple[1] ++ "` field");
         }
     }

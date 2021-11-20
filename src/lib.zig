@@ -2,6 +2,7 @@ pub const traits = struct {
     pub usingnamespace @import("traits/has_decl.zig");
     pub usingnamespace @import("traits/has_field.zig");
     pub usingnamespace @import("traits/has_function.zig");
+    pub usingnamespace @import("traits/has_functions.zig");
     pub usingnamespace @import("traits/is_container.zig");
     pub usingnamespace @import("traits/is_extern.zig");
     pub usingnamespace @import("traits/is_float.zig");

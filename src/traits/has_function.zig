@@ -3,9 +3,11 @@ const std = @import("std");
 const concepts = @import("../lib.zig");
 
 pub fn hasFunction(comptime T: type, comptime name: []const u8) bool {
-    comptime if (!concepts.traits.isContainer(T)) return false;
+    comptime {
+        if (!concepts.traits.isContainer(T)) return false;
 
-    return std.meta.trait.hasFn(name)(T);
+        return std.meta.trait.hasFn(name)(T);
+    }
 }
 
 test {

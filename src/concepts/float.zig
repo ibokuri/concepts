@@ -2,7 +2,7 @@ const concepts = @import("../lib.zig");
 
 const concept = "Float";
 
-pub fn float(T: anytype) void {
+pub fn float(comptime T: type) void {
     comptime {
         // Invariants
         concepts.same(@TypeOf(T), type);

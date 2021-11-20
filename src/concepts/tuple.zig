@@ -2,12 +2,8 @@ const concepts = @import("../lib.zig");
 
 const concept = "Tuple";
 
-pub fn tuple(T: anytype) void {
+pub fn tuple(comptime T: type) void {
     comptime {
-        // Invariants
-        concepts.same(@TypeOf(T), type);
-
-        // Constraints
         if (!concepts.traits.isTuple(T)) {
             concepts.fail(concept, "");
         }

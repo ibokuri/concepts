@@ -1,0 +1,7 @@
+pkgs:
+  concepts:
+    version: 0.0.0
+    description: "Compile-time validation of type constraints"
+    license: MIT
+    source_url: "https://github.com/ibokuri/concepts"
+    root: src/lib.zig

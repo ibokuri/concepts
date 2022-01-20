@@ -20,15 +20,6 @@ const std = @import("std");
 
 const concepts = @import("concepts");
 
-/// Specifies that a type is a `std.ArrayList`.
-fn arrayList(comptime T: type) void {
-    comptime concepts.Concept("ArrayList", "")(.{
-        concepts.traits.hasDecl(T, "Slice"),
-        concepts.traits.isSlice(T.Slice),
-        concepts.traits.isSame(T, std.ArrayList(std.meta.Child(T.Slice))),
-    });
-}
-
 pub fn main() anyerror!void {
     comptime {
         concepts.integral(i32);
@@ -37,6 +28,15 @@ pub fn main() anyerror!void {
         arrayList(std.ArrayList(u8));
         arrayList(std.ArrayListUnmanaged(u8)); // error: concept `ArrayList` was not satisfied
     }
+}
+
+/// arrayList is a concept that requires `T` to be a `std.ArrayList`.
+fn arrayList(comptime T: type) void {
+    comptime concepts.Concept("ArrayList", "")(.{
+        concepts.traits.hasDecl(T, "Slice"),
+        concepts.traits.isSlice(T.Slice),
+        concepts.traits.isSame(T, std.ArrayList(std.meta.Child(T.Slice))),
+    });
 }
 ```
 

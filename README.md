@@ -7,7 +7,6 @@ The Concepts library provides compile-time validation of type constraints.
 * [Overview](#overview)
 * [Installation](#installation)
 * [API Reference](#api-reference)
-* [Contributing](#contributing)
 * [License](#license)
 
 ## Overview
@@ -140,10 +139,6 @@ fn arrayList(comptime T: type) void {
 - `isSlice` - Checks if a type is a slice type.
 - `isString` - Checks if a type is a string type.
 - `isTuple` - Checks if a type is a tuple type.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for more detail.
 
 ## License
 

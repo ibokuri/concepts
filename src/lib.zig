@@ -78,5 +78,5 @@ pub fn fail(comptime concept: []const u8, comptime msg: []const u8) void {
 }
 
 comptime {
-    @import("std").testing.refAllDecls(@This());
+    @import("std").testing.refAllDecls(traits);
 }

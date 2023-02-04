@@ -8,27 +8,23 @@ const tests = [_][]const u8{
 };
 
 pub fn build(b: *std.build.Builder) void {
-    // Options
-    const mode = b.standardReleaseOptions();
     const target = b.standardTargetOptions(.{});
+    const optimize = b.standardOptimizeOption(.{});
 
-    // Tests
+    _ = b.addModule(.{
+        .name = "concepts",
+        .source_file = .{ .path = "src/lib.zig" },
+    });
+
     const step = b.step("test", "Run framework tests");
-
     for (tests) |path| {
-        const t = b.addTest(path);
-
-        t.setBuildMode(mode);
-        t.setTarget(target);
-        t.addPackagePath(package_name, package_path);
+        const t = b.addTest(.{
+            .name = "test",
+            .root_source_file = .{ .path = path },
+            .target = target,
+            .optimize = optimize,
+        });
 
         step.dependOn(&t.step);
     }
-
-    // Library
-    const lib = b.addStaticLibrary(package_name, package_path);
-
-    lib.setBuildMode(mode);
-    lib.setTarget(target);
-    lib.install();
 }

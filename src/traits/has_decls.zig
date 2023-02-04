@@ -8,7 +8,7 @@ pub fn hasDecls(comptime T: type, comptime names: anytype) bool {
         concepts.tuple(@TypeOf(names));
 
         for (std.meta.fields(@TypeOf(names))) |field| {
-            concepts.string(field.field_type);
+            concepts.string(field.type);
         }
 
         // Constraints

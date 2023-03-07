@@ -11,8 +11,7 @@ pub fn build(b: *std.build.Builder) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
-    _ = b.addModule(.{
-        .name = "concepts",
+    _ = b.addModule("concepts", .{
         .source_file = .{ .path = "src/lib.zig" },
     });
 
